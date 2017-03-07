@@ -3,7 +3,10 @@
 
     var app = angular.module('cnaf-route', ['ui.router']);
 
-    app.config(['$stateProvider', function($stateProvider) {
+    app.config(['$locationProvider', '$stateProvider', function($locationProvider, $stateProvider) {
+		$locationProvider
+			.html5Mode(true);
+
         var homeState = {
             name: 'home',
             url: '/',
