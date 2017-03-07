@@ -8,6 +8,11 @@
 	
 	app.use(express.static('.'));
 	app.use(serveIndex('.', {icons: true}));
+	
+	app.use('/app/', function(req, res, next){
+		console.log('req.url', req.url);
+		res.sendFile('./app/exo3/index.html', {root: __dirname});
+	});
 
 	app.use(function(req, res, next) {
 		console.log('404: Page not Found', req.url);
