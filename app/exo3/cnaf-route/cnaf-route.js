@@ -40,8 +40,8 @@
 
     app.controller('ProductCtrl', ['$http', function($http) {
         console.log('Debut Product controller', arguments);
-        $http.get('../../ws/s1').then(function() {
-
+        $http.get('../../ws/s1').then(function(response) {
+            console.log('reponse', response);
         }).catch(function(error) {
             console.error('Error :', error);
         });
