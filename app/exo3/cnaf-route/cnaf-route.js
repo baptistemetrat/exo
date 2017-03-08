@@ -4,8 +4,8 @@
     var app = angular.module('cnaf-route', ['ui.router']);
 
     app.config(['$locationProvider', '$stateProvider', function($locationProvider, $stateProvider) {
-		$locationProvider
-			.html5Mode(true);
+        $locationProvider
+            .html5Mode(true);
 
         var homeState = {
             name: 'home',
@@ -16,7 +16,8 @@
         var productState = {
             name: 'product',
             url: '/product',
-            templateUrl: 'cnaf-route/tmpl/product.html'
+            templateUrl: 'cnaf-route/tmpl/product.html',
+            controller: 'ProductCtrl'
         };
 
         var serviceState = {
@@ -37,4 +38,13 @@
         $stateProvider.state(contactState);
     }]);
 
+    app.controller('ProductCtrl', ['$http', function($http) {
+        console.log('Debut Product controller', arguments);
+        $http.get('../../ws/s1').then(function() {
+
+        }).catch(function(error) {
+            console.error('Error :', error);
+        });
+
+    }]);
 })();
