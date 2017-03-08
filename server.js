@@ -3,10 +3,14 @@
 
     var express = require('express'); // charge ExpressJS
     var serveIndex = require('serve-index');
+	var ws = require('./webservice.js');
 
     var app = express();
 
-    app.use(express.static('.'));
+    app.use('/ws', ws);
+	
+	app.use(express.static('.'));
+	
     app.use(serveIndex('.', {icons: true}));
 
     app.use('/app/', function(req, res, next) {
